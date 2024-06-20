@@ -4,8 +4,11 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    /**
+     * for '/' routes
+     */
+    public function index()
     {
-        return view('welcome_message');
+        return redirect()->to('auth');
     }
 }
