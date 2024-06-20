@@ -24,4 +24,9 @@ class Dashboard extends BaseController
     {
         return view('dashboard/wishlistprs');
     }
+
+    public function test1()
+    {
+        return view('dashboard/test1');
+    }
 }

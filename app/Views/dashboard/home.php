@@ -1,3 +1,9 @@
+<?php
+
+use App\Controllers\Dashboard;
+
+$dashboard = new Dashboard();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +33,22 @@
             <section class="sidebar h-100 shadow bg-dark bg-gradient ">
                 <?= view('components/sidebarUl') ?>
             </section>
-            <section class="mainContents w-100 h-100"></section>
+            <section class="mainContents w-100 h-100 text-dark">
+                <!-- 
+                    This line is used as view             
+                -->
+                <?php
+                if (checkUrl('dashboard/home'))
+                    echo view('dashboard/test1');
+                else if (checkUrl('dashboard/workinprogressprs'))
+                    echo view('dashboard/workinprogressprs');
+                else if (checkUrl('dashboard/wishlistprs'))
+                    echo view('dashboard/wishlistprs');
+                else if (checkUrl('dashboard/completedprs'))
+                    echo view('dashboard/completedprs');
+                ?>
+
+            </section>
         </section>
     </main>
 </body>
