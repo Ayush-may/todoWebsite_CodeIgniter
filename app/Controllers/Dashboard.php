@@ -4,12 +4,18 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\Users;
+
 
 class Dashboard extends BaseController
 {
     public function home()
     {
-        return view('dashboard/home');
+        $username = session()->get('user');
+        $user = new Users();
+        $currentUser = $user->select(['username', 'id', 'created_at'])->where('username', $username)->first();
+
+        return view('dashboard/home', ['currentUser' => $currentUser]);
     }
 
     public function workinprogress()

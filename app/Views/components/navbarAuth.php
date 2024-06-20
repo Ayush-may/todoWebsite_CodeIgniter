@@ -17,7 +17,7 @@
     <h5 class="text-center py-3 h3 fw-bold"><span class="text-warning">GSOC</span>'24 PR.</h5>
     <div class="d-flex align-items-center gap-3">
         <form action="/logout" method="POST">
-            <button class="btn btn-sm btn-danger">log out</button>
+            <button class="btn btn-danger">log out</button>
         </form>
         <p class="text-uppercase p-0 m-0">username : <?= session()->get('user') ?></p>
     </div>

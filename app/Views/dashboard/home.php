@@ -1,9 +1,3 @@
-<?php
-
-use App\Controllers\Dashboard;
-
-$dashboard = new Dashboard();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,19 +28,41 @@ $dashboard = new Dashboard();
                 <?= view('components/sidebarUl') ?>
             </section>
             <section class="mainContents w-100 h-100 text-dark">
-                <!-- 
-                    This line is used as view             
-                -->
-                <?php
-                if (checkUrl('dashboard/home'))
-                    echo view('dashboard/test1');
-                else if (checkUrl('dashboard/workinprogressprs'))
-                    echo view('dashboard/workinprogressprs');
-                else if (checkUrl('dashboard/wishlistprs'))
-                    echo view('dashboard/wishlistprs');
-                else if (checkUrl('dashboard/completedprs'))
-                    echo view('dashboard/completedprs');
-                ?>
+                <h4 class="h1">Dashboard</h4>
+                <hr>
+                <section class="px-3">
+
+                    <div class="row col-3">
+                        <p class="p-0 h5">Username : <?= $currentUser['username'] ?></p>
+                    </div>
+
+                    <div class="row col">
+                        <p class="p-0 h5">Created at : <?= $currentUser['created_at'] ?></p>
+                    </div>
+
+                    <div class="row gap-4 mt-4">
+                        <div class="col p-3 bg-warning rounded ">
+                            <p class="h4  text-white">Work in progress Pr.</p>
+                        </div>
+                        <div class="col p-3 bg-primary rounded ">
+                            <p class="h4  text-white">Total Pr. 3</p>
+                        </div>
+                        <div class="col p-3 bg-success rounded ">
+                            <p class="h4 text-white"> Completed Pr.</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 gap-4">
+                        <div class="col p-3 bg-primary rounded ">
+                            <p class="h4  text-white">Total Pr. 3</p>
+                        </div>
+                        <div class="col p-3 bg-danger rounded">
+                            <p class="h4  text-white">Total Pr.</p>
+                        </div>
+                    </div>
+
+                </section>
+
 
             </section>
         </section>

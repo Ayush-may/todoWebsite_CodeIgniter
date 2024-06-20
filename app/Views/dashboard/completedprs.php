@@ -1,3 +1,11 @@
+<?php
+
+use App\Controllers\Dashboard;
+
+$s = request()->getGet('s');
+echo $s;
+$dashboard = new Dashboard();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +35,9 @@
             <section class="sidebar h-100 shadow bg-dark bg-gradient ">
                 <?= view('components/sidebarUl') ?>
             </section>
-            <section class="mainContents w-100 h-100"></section>
+            <section class="mainContents w-100 h-100 text-dark">
+                completed page
+            </section>
         </section>
     </main>
 </body>

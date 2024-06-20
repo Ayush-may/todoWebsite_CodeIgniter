@@ -10,8 +10,8 @@ $routes->post('/', 'Auth::index');
 /**
  * Dashboard Controller routes used as view in 'dashboard/home'route
  */
-$routes->get('dashboard/home', 'Dashboard::home');
-$routes->get('dashboard/workinprogressprs', 'Dashboard::workinprogress');
-$routes->get('dashboard/completedprs', 'Dashboard::completedprs');
-$routes->get('dashboard/wishlistprs', 'Dashboard::wishlistprs');
-$routes->get('dashboard/test1', 'Dashboard::test1');
+// $routes->get('dashboard/home', 'Dashboard::home');
+// $routes->get('dashboard/home?s=work in progress', 'Dashboard::workinprogress');
+// $routes->get('dashboard/completedprs', 'Dashboard::completedprs');
+// $routes->get('dashboard/wishlistprs', 'Dashboard::wishlistprs');
+// $routes->get('dashboard/test1', 'Dashboard::test1');

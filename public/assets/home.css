@@ -24,7 +24,7 @@ section.sidebar {
 
 section.sidebar,
 section.mainContents {
-    padding-top: 100px;
+    padding-top: 90px;
 }
 
 section.sidebar ul,
@@ -35,4 +35,9 @@ section.sidebar li {
 
 section.sidebar a {
     text-decoration: none;
+}
+
+section.mainContents {
+    padding-left: 20px;
+    padding-right: 20px;
 }
