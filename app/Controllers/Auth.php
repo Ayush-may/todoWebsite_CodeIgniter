@@ -13,19 +13,19 @@ class Auth extends BaseController
     {
         if ($this->request->getMethod() == "POST") {
             $validate = $this->validate([
-                'username' => 'required|min_length[4]|max_length[8]',
+                'githubUsername' => 'required',
                 'password' => 'required|min_length[4]|max_length[8]',
             ]);
             if (!$validate) {
                 return view('auth/login', ['validation' => $this->validator->getErrors()]);
             }
 
-            $username = $this->request->getVar('username');
+            $githubUsername = $this->request->getVar('githubUsername');
             $password = $this->request->getVar('password');
-            $data = ['username' => $username, 'password' => $password];
+            $data = ['githubUsername' => $githubUsername, 'password' => $password];
 
             $users = new Users();
-            $isPresent = $users->where('username', $username)->first();
+            $isPresent = $users->where('githubUsername  ', $githubUsername)->first();
 
             if (!$isPresent) {
                 return redirect()->to('auth')->with('error', 'users is not avaialable');
@@ -35,7 +35,7 @@ class Auth extends BaseController
                 return redirect()->to('auth')->with('error', 'Wrong Password !');
             }
 
-            session()->set('user', $data['username']);
+            session()->set('user', $data['githubUsername']);
             session()->set('isLoggedIn', true);
             return redirect()->to('dashboard/home');
         }
@@ -46,17 +46,19 @@ class Auth extends BaseController
     {
         if ($this->request->getMethod() == "POST") {
             $validate = $this->validate([
-                'username' => 'required|min_length[4]|max_length[8]|is_unique[users.username]',
+                // 'username' => 'required|min_length[4]|max_length[8]|is_unique[users.username]',
+                'githubUsername' => 'required|is_unique[users.githubUsername]',
                 'password' => 'required|min_length[4]|max_length[8]',
                 'confirmPassword' => 'required|matches[password]',
             ]);
             if (!$validate) {
-                return view('auth/signup', ['validation' => $this->validator->getErrors()]);
+                session()->setFlashdata('validation', $this->validator->getErrors());
+                return redirect()->to('auth/signup');
             }
 
-            $username = $this->request->getVar('username');
+            $githubUsername = $this->request->getVar('githubUsername');
             $password = $this->request->getVar('password');
-            $data = ['username' => $username, 'password' => $password];
+            $data = ['githubUsername' => $githubUsername, 'password' => $password];
 
             $users = new Users();
             if ($users->save($data)) {

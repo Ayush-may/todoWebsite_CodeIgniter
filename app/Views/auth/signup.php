@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo. login</title>
     <!-- Boostrap cdn-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- jquery cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -28,17 +23,19 @@
                         <form action="" class="form" method="POST">
 
                             <!-- successfull message -->
-                            <?php if (session()->getFlashdata('success')): ?>
+                            <?php if (session()->getFlashdata('success')) : ?>
                                 <div class="alert alert-success m-0">
                                     <?= session()->getFlashdata('success') ?>
                                 </div>
                             <?php endif; ?>
 
                             <!-- error messages  -->
-                            <?php if (isset($validation)): ?>
+                            <?php if (session()->getFlashdata('validation')) :
+                                $validation = session()->getFlashdata('validation');
+                            ?>
                                 <div class="alert alert-danger m-0">
                                     <ul>
-                                        <?php foreach ($validation as $row): ?>
+                                        <?php foreach ($validation as $row) : ?>
                                             <li><?= $row ?></li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -47,9 +44,13 @@
 
 
                             <table class="w-100" style="border-collapse: separate;border-spacing:0rem 1.5rem;">
-                                <tr>
+                                <!-- <tr>
                                     <td><label>Username</label></td>
                                     <td> <input type="text" name="username" class="form-control w-100" /></td>
+                                </tr> -->
+                                <tr>
+                                    <td><label>Github's username</label></td>
+                                    <td> <input type="text" name="githubUsername" class="form-control w-100" /></td>
                                 </tr>
                                 <tr>
                                     <td><label>Password</label></td>

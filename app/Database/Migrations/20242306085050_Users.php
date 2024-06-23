@@ -13,10 +13,15 @@ class Users extends Migration
                 'type' => 'int',
                 'auto_increment' => true,
             ],
-            'username' => [
-                'type' => 'varchar',
-                'constraint' => '10',
-                'unique' => true,
+            // 'username' => [
+            //     'type' => 'varchar',
+            //     'constraint' => '10',
+            //     'unique' => true,
+            //     'null' => false,
+            // ],
+            'githubUsername' => [
+                'type' => 'text',
+                // 'unique' => true,
                 'null' => false,
             ],
             'password' => [

@@ -13,7 +13,7 @@ class Dashboard extends BaseController
     {
         $username = session()->get('user');
         $user = new Users();
-        $currentUser = $user->select(['username', 'id', 'created_at'])->where('username', $username)->first();
+        $currentUser = $user->select(['githubUsername', 'id', 'created_at'])->where('githubUsername', $username)->first();
 
         return view('dashboard/home', ['currentUser' => $currentUser]);
     }
