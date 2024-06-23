@@ -18,6 +18,11 @@ class Dashboard extends BaseController
         return view('dashboard/home', ['currentUser' => $currentUser]);
     }
 
+    public function addprs()
+    {
+        return view('dashboard/addprs');
+    }
+
     public function workinprogress()
     {
         return view('dashboard/workinprogress');

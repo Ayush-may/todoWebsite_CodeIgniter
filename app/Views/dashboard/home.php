@@ -19,6 +19,7 @@
         <?= view('components\navbarAuth') ?>
 
         <section class="contents h-100">
+            <!-- side bar -->
             <section class="sidebar h-100 shadow bg-dark bg-gradient ">
                 <?= view('components/sidebarUl') ?>
             </section>
@@ -26,15 +27,18 @@
                 <h4 class="h1">Dashboard</h4>
                 <hr>
                 <section class="px-3">
+
                     <section class="row">
+
                         <div class="col card card-body" style="width:auto;">
                             <div class="">
-                                <p class="p-0 h5">Github Username : <?= $currentUser['githubUsername'] ?></p>
+                                <p class="p-0 h5 fw-bold">Github Username : <span class="fw-normal"><?= $currentUser['githubUsername'] ?></span></p>
                             </div>
                             <div class="">
-                                <p class="p-0 h5">Created at : <?= $currentUser['created_at'] ?></p>
+                                <p class="p-0 h5 fw-bold">Created at : <span class=""><?= $currentUser['created_at'] ?></span></p>
                             </div>
                         </div>
+
                         <div class="col">
                             <div class="row" style="width:400px;height:300px;overflow:hidden">
                                 <img id="githubUserImage" class="col-5" alt="" style="overflow:hidden;object-fit:cover;height:100%;width:100%;">
@@ -43,6 +47,7 @@
                         </div>
                     </section>
 
+                    <!-- 3 col area -->
                     <div class="row gap-4 mt-4">
                         <div class="col p-3 bg-warning rounded ">
                             <p class="h4  text-white">Work in progress Pr.</p>
@@ -55,6 +60,8 @@
                         </div>
                     </div>
 
+
+                    <!-- 2 col area -->
                     <div class="row mt-3 gap-4">
                         <div class="col p-3 bg-primary rounded ">
                             <p class="h4  text-white">Total Pr. 3</p>

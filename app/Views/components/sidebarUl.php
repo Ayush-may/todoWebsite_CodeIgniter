@@ -5,6 +5,9 @@
         </a>
     </li>
     <li class="mt-3">
+        <a href=<?= site_url('/dashboard/addprs') ?> class="<?= checkUrl('dashboard/addprs') ?>">Add Prs</a>
+    </li>
+    <li class="mt-3">
         <a href=<?= site_url('/dashboard/workinprogress') ?> class="<?= checkUrl('dashboard/workinprogress') ?>">Work in
             progress PRs.</a>
     </li>

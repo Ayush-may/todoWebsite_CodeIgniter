@@ -14,7 +14,7 @@
     }
 </style>
 <nav class="w-100 d-flex justify-content-between align-items-center px-4 bg-white">
-    <h5 class="text-center py-3 h3 fw-bold"><span class="text-warning">GSOC</span>'24 PR.</h5>
+    <h5 class="text-center py-3 h3 fw-bold"><span class="text-warning">GSSOC</span>'24 PR.</h5>
     <div class="d-flex align-items-center gap-3">
         <form action="/logout" method="POST">
             <button class="btn btn-danger">log out</button>
