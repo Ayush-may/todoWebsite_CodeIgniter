@@ -17,6 +17,11 @@
         #githubNameId {
             display: hidden;
         }
+
+        option span {
+            width: 10px;
+            height: 10px;
+        }
     </style>
 </head>
 
@@ -34,7 +39,7 @@
 
                 <section class="card">
                     <div class="card-body">
-                        <form class="w-100">
+                        <form class="w-100" action="" method="POST">
                             <table class="w-100" style="border-collapse:collapse;">
                                 <tbody class="w-100">
 
@@ -52,12 +57,50 @@
 
                                     <tr class="mt-3 row align-items-center" id="githubNameId">
                                         <td class="fw-bold col-2">Repo name : </td>
-                                        <td class="col"><input type="text" name="reponame" class="form-control border border-secondary"></td>
+                                        <td class="col"><input type="text" name="repoName" class="form-control border border-secondary"></td>
                                     </tr>
 
                                     <tr class="mt-3 row align-items-center">
-                                        <td class="fw-bold col-2">issue number : </td>
-                                        <td class="col"><input type="text" name="reponame" class="form-control border border-secondary"></td>
+                                        <td class="fw-bold col-2">Repo Link : </td>
+                                        <td class="col"><input type="text" name="repoLink" class="form-control border border-secondary"></td>
+                                    </tr>
+
+                                    <tr class="mt-3 row align-items-center">
+                                        <td class="fw-bold col-2">Issue Number : </td>
+                                        <td class="col"><input type="text" name="issueNumber" class="form-control border border-secondary"></td>
+                                    </tr>
+
+                                    <tr class="mt-3 row align-items-center">
+                                        <td class="fw-bold col-2">Priority : </td>
+                                        <td class="col">
+                                            <select class="form-control border border-secondary" id="githubNameSelect" name="githubNameSelect">
+                                                <option>low</option>
+                                                <option>medium</option>
+                                                <option>high</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="mt-3 row align-items-center">
+                                        <td class="fw-bold col-2">Assigned :</td>
+                                        <td class="col-2">
+                                            <div class="form-group">
+                                                <label>Assigned</label>
+                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" />
+                                            </div>
+                                        </td>
+                                        <td class="col">
+                                            <div class="form-group">
+                                                <label>Not assigned yet</label>
+                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" />
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <button class="w-100 btn btn-info mt-3" name="submitButton">Submit</button>
+                                        </td>
                                     </tr>
 
                                 </tbody>
@@ -70,18 +113,18 @@
         </section>
     </main>
     <script>
-        $('document').ready(() => {
-            const githubNameSelect = $('#githubNameSelect');
-            const githubNameTr = $('#githubNameId')[0];
-            console.log(githubNameTr);
+        // $('document').ready(() => {
+        //     const githubNameSelect = $('#githubNameSelect');
+        //     const githubNameTr = $('#githubNameId')[0];
+        //     console.log(githubNameTr);
 
-            githubNameSelect.change((event) => {
-                if (event.target.value == "other") {
-                    githubNameTr.style.display = "block";
-                }
-            });
+        //     githubNameSelect.change((event) => {
+        //         if (event.target.value == "other") {
+        //             githubNameTr.style.display = "block";
+        //         }
+        //     });
 
-        });
+        // });
     </script>
 </body>
 

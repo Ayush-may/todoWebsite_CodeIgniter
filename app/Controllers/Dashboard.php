@@ -20,6 +20,9 @@ class Dashboard extends BaseController
 
     public function addprs()
     {
+        #data = [];
+        if ($this->request->getMethod() == "POST") {
+        }
         return view('dashboard/addprs');
     }
 
@@ -34,10 +37,5 @@ class Dashboard extends BaseController
     public function wishlistprs()
     {
         return view('dashboard/wishlistprs');
-    }
-
-    public function test1()
-    {
-        return view('dashboard/test1');
     }
 }
