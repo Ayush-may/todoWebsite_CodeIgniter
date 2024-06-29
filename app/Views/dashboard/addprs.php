@@ -37,9 +37,11 @@
                 <h4 class="h1">Add issue</h4>
                 <hr>
 
+                <button class="btn btn-primary btn-sm mb-3" onclick="javascript:window.history.back()">Go back</button>
+
                 <section class="card">
                     <div class="card-body">
-                        <form class="w-100" action="" method="POST">
+                        <!-- <form class="w-100" action="" method="POST">
                             <table class="w-100" style="border-collapse:collapse;">
                                 <tbody class="w-100">
 
@@ -99,19 +101,38 @@
 
                                     <tr>
                                         <td>
-                                            <button class="w-100 btn btn-info mt-3" name="submitButton">Submit</button>
+                                            <button class="w-100 btn btn-warning shadow-sm mt-3" name="submitButton">Submit</button>
                                         </td>
                                     </tr>
 
                                 </tbody>
                             </table>
-                        </form>
+                        </form> -->
+
+                        <form action="" method="POST" id="add_repo"></form>
+
+                        <table class="w-100" border=1>
+                            <tbody >
+                                <tr>
+                                    <td>Previous Repo :</td>
+                                    <td style="min-width:">
+                                        <select class="form-control border border-secondary" id="githubNameSelect" name="githubNameSelect">
+                                            <option>sample 1</option>
+                                            <option>sample 2</option>
+                                            <option>sample 3</option>
+                                            <option>other</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </section>
 
             </section>
         </section>
     </main>
+
     <script>
         // $('document').ready(() => {
         //     const githubNameSelect = $('#githubNameSelect');
@@ -126,6 +147,7 @@
 
         // });
     </script>
+
 </body>
 
 </html>

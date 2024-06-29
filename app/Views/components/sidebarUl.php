@@ -1,11 +1,11 @@
-<ul class="px-3">
+<ul class="px-3 sidebar">
     <li class="">
         <a href=<?= site_url('/dashboard/home') ?> class="<?= checkUrl('dashboard/home') ?>">
             Home
         </a>
     </li>
     <li class="mt-3">
-        <a href=<?= site_url('/dashboard/addprs') ?> class="<?= checkUrl('dashboard/addprs') ?>">Add Prs</a>
+        <a href=<?= site_url('/dashboard/addPrsAlready') ?> class="<?= checkUrl('dashboard/addPrsAlready') ?>">Add Prs</a>
     </li>
     <li class="mt-3">
         <a href=<?= site_url('/dashboard/workinprogress') ?> class="<?= checkUrl('dashboard/workinprogress') ?>">Work in
