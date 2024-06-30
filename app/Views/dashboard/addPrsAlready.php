@@ -36,10 +36,10 @@
                 </section>
 
 
-                <section class="mt-3 px-3 "  style="max-width:100%">
+                <section class="mt-3 px-3 " style="max-width:100%">
                     <p class="h4 text-capitalize">previos added repos</p>
 
-                    <section  style="max-width:100%">
+                    <section style="max-width:100%">
                         <table class="table table-responsive table-bordered">
                             <thead class="text-center">
                                 <tr class="table-secondary">

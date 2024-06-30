@@ -36,6 +36,7 @@ class Auth extends BaseController
             }
 
             session()->set('user', $data['githubUsername']);
+            session()->set('userId', $isPresent['id']);
             session()->set('isLoggedIn', true);
             return redirect()->to('dashboard/home');
         }
