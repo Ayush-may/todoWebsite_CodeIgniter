@@ -40,13 +40,13 @@
                     <p class="h4 text-capitalize">previos added repos</p>
 
                     <section style="max-width:100%">
-                        <table class="table table-responsive table-bordered">
+                        <table class="w-100 table-responsive table-bordered">
                             <thead class="text-center">
                                 <tr class="table-secondary">
                                     <th>Sno.</th>
                                     <th>Repo name</th>
-                                    <th>Pending issues</th>
-                                    <th>Pending prs</th>
+                                    <th>issues</th>
+                                    <th>prs</th>
                                     <th>Merged</th>
                                     <th>Dated date</th>
                                     <th>Last update date</th>
@@ -55,48 +55,24 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                <tr>
-                                    <td>1</td>
-                                    <td>Web Stack_3</td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>1-1-1</td>
-                                    <td>1-1-1</td>
-                                    <td>
-                                        <button class="btn btn-warning">Edit</button> |
-                                        <button class="btn btn-success">Add</button>
-                                    </td>
-                                    <td><button class="btn btn-danger">remove</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Web Stack_3</td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>1-1-1</td>
-                                    <td>1-1-1</td>
-                                    <td>
-                                        <button class="btn btn-warning">Edit</button> |
-                                        <button class="btn btn-success">Add</button>
-                                    </td>
-                                    <td><button class="btn btn-danger">remove</button></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Web Stack_3</td>
-                                    <td>3</td>
-                                    <td>1</td>
-                                    <td>0</td>
-                                    <td>1-1-1</td>
-                                    <td>1-1-1</td>
-                                    <td>
-                                        <button class="btn btn-warning">Edit</button>
-                                        <button class="btn btn-success">Add</button>
-                                    </td>
-                                    <td><button class="btn btn-danger">remove</button></td>
-                                </tr>
+                                <?php
+                                $index = 1;
+                                foreach ($data as $row) : ?>
+                                    <tr>
+                                        <td><?= $index++ ?></td>
+                                        <td><?= $row->repo_name ?></td>
+                                        <td><?= $row->total_issues ?></td>
+                                        <td>not coded</td>
+                                        <td>not coded</td>
+                                        <td class="text-nowrap"><?= $row->created_at ?></td>
+                                        <td><?= $row->updated_at == "" ? "Not updated" : $row->updated_at ?></td>
+                                        <td class="d-flex justify-content-center gap-1">
+                                            <button class="btn btn-warning">Edit</button> |
+                                            <button class="btn btn-success">Add</button>
+                                        </td>
+                                        <td><button class="btn btn-danger">remove</button></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </section>

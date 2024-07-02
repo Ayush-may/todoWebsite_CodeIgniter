@@ -42,7 +42,18 @@
                 <section class="card">
                     <div class="card-body">
 
-                        <form action="" method="GET" id="add_repo">
+                        <form action="" method="POST" id="add_repo">
+                            <?php if (session()->getFlashdata('validate_error')) : ?>
+                                <div class="alert alert-danger">
+                                    <?= session()->getFlashdata('validate_error') ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (session()->getFlashdata('validate_success')) : ?>
+                                <div class="alert alert-success">
+                                    <?= session()->getFlashdata('validate_success') ?>
+                                </div>
+                            <?php endif; ?>
 
                             <!-- form -->
                             <table class="w-100">
@@ -62,7 +73,20 @@
                                     <tr class="">
                                         <td class="pe-4" style="text-wrap:nowrap;">Repo name : </td>
                                         <td class="" style="min-width:100%;">
-                                            <input type="text" name="repoName" class="form-control border border-secondary">
+                                            <select class="form-control border border-secondary" name="repoName" id="repoNameSelect">
+                                                <option selected disabled>select</option>
+                                                <?php foreach ($repo_name as $row) : ?>
+                                                    <option value="<?= $row->repo_name ?>"><?= $row->repo_name ?></option>
+                                                <?php endforeach; ?>
+                                                <option value="OTHER">OTHER</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="">
+                                        <td class="pt-3 pe-2 text-nowrap">Repo name (New) : </td>
+                                        <td class="pt-3">
+                                            <input type="text" name="repoNameNew" id="repoNameNew" class="form-control border border-secondary">
                                         </td>
                                     </tr>
 
@@ -76,31 +100,31 @@
                                     <tr class="">
                                         <td class="pt-3">Issue number : </td>
                                         <td class="pt-3">
-                                            <input type="text" name="issueNumber" class="form-control border border-secondary">
+                                            <input type="number" name="issueNumber" class="form-control border border-secondary">
                                         </td>
                                     </tr>
 
                                     <tr class="">
                                         <td class="pt-3">Priority : </td>
                                         <td class="pt-3">
-                                            <select class="form-control border border-secondary" id="githubNameSelect" name="githubNameSelect">
-                                                <option>low</option>
-                                                <option>medium</option>
-                                                <option>high</option>
+                                            <select class="form-control border border-secondary" id="priority" name="priority">
+                                                <option selected disabled>select</option>
+                                                <option value="LOW">low</option>
+                                                <option value="MEDIUM">medium</option>
+                                                <option value="HIGH">high</option>
                                             </select>
                                         </td>
                                     </tr>
-
 
                                     <tr>
                                         <td class="pt-3">Assigned : </td>
                                         <td class="pt-3">
                                             <div>
-                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" />
+                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" value="1" />
                                                 <label>Assigned</label>
                                             </div>
                                             <div class="mt-2">
-                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" />
+                                                <input type="radio" class="form-check-input border border-secondary" name="assignId" value="0" />
                                                 <label>Not assigned yet</label>
                                             </div>
                                         </td>
@@ -124,18 +148,18 @@
     </main>
 
     <script>
-        // $('document').ready(() => {
-        //     const githubNameSelect = $('#githubNameSelect');
-        //     const githubNameTr = $('#githubNameId')[0];
-        //     console.log(githubNameTr);
+        $('document').ready(() => {
+            $('#repoNameNew').prop('disabled', true);
 
-        //     githubNameSelect.change((event) => {
-        //         if (event.target.value == "other") {
-        //             githubNameTr.style.display = "block";
-        //         }
-        //     });
+            $('#repoNameSelect').change(() => {
+                if ($('#repoNameSelect').val() == 'OTHER') {
+                    $('#repoNameNew').prop('disabled', false);
+                } else {
+                    $('#repoNameNew').prop('disabled', true);
+                }
+            })
 
-        // });
+        });
     </script>
 
 </body>
