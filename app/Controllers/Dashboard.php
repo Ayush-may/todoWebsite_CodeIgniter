@@ -32,27 +32,39 @@ class Dashboard extends BaseController
 
     public function addprs()
     {
-        $repo_name = $this->dashHelper->add_pr_repo_name(new Repo());
+        // No use for now 
+        // $repo_name = $this->dashHelper->add_pr_repo_name(new Repo());
+
         if ($this->request->getMethod() == "POST") {
             $validate = $this->validate([
-                'repoName' => 'required',
+                // 'repoName' => 'required',
                 'repoNameNew' => 'required',
                 'repoLink' => 'required',
-                'issueNumber' => 'required',
-                'priority' => 'required',
-                'assignId' => 'required'
+                // 'issueNumber' => 'required',
+                // 'priority' => 'required',
+                // 'assignId' => 'required'
             ]);
 
             if (!$validate) {
                 session()->setFlashdata('validate_error', 'All fields is compulsory !');
-                return view('dashboard/addprs', ['repo_name' => $repo_name]);
+                return view('dashboard/addprs');
+                // return view('dashboard/addprs', ['repo_name' => $repo_name]);
             }
 
+            $getPost = $this->request->getPost();
+            $data = [
+                'user_id' => 2,
+                'repo_name' => $getPost['repoNameNew'],
+                'repo_link' => $getPost['repoLink'],
+            ];
 
-
-            session()->setFlashdata('validate_success', 'Successfully saved !');
+            $repo = new Repo();
+            if ($repo->save($data)) {
+                session()->setFlashdata('validate_success', 'Successfully saved !');
+            }
         }
-        return view('dashboard/addprs', ['repo_name' => $repo_name]);
+        // return view('dashboard/addprs', ['repo_name' => $repo_name]);
+        return view('dashboard/addprs');
     }
 
     public function workinprogress()

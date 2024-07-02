@@ -34,7 +34,7 @@
                 <?= view('components/sidebarUl') ?>
             </section>
             <section class="mainContents w-100 h-100 text-dark">
-                <h4 class="h1">Add issue</h4>
+                <h4 class="h1">Add new repo</h4>
                 <hr>
 
                 <button class="btn btn-primary btn-sm mb-3" onclick="javascript:window.history.back()">Go back</button>
@@ -70,18 +70,27 @@
                                         </td>
                                     </tr> -->
 
-                                    <tr class="">
+                                    <!-- 
+                                        Im not using this right now coz things are little diff rn 
+                                        Date : 02/07/2024 
+                                    -->
+
+                                    <!-- <tr class="">
                                         <td class="pe-4" style="text-wrap:nowrap;">Repo name : </td>
                                         <td class="" style="min-width:100%;">
                                             <select class="form-control border border-secondary" name="repoName" id="repoNameSelect">
                                                 <option selected disabled>select</option>
-                                                <?php foreach ($repo_name as $row) : ?>
-                                                    <option value="<?= $row->repo_name ?>"><?= $row->repo_name ?></option>
-                                                <?php endforeach; ?>
+                                                <? // php foreach ($repo_name as $row) : 
+                                                ?>
+                                                    <option value="<?php // $row->repo_name 
+                                                                    ?>"><?php // $row->repo_name 
+                                                                        ?></option>
+                                                <?php // endforeach; 
+                                                ?>
                                                 <option value="OTHER">OTHER</option>
                                             </select>
                                         </td>
-                                    </tr>
+                                    </tr> -->
 
                                     <tr class="">
                                         <td class="pt-3 pe-2 text-nowrap">Repo name (New) : </td>
@@ -97,12 +106,12 @@
                                         </td>
                                     </tr>
 
-                                    <tr class="">
+                                    <!-- <tr class="">
                                         <td class="pt-3">Issue number : </td>
                                         <td class="pt-3">
                                             <input type="number" name="issueNumber" class="form-control border border-secondary">
                                         </td>
-                                    </tr>
+                                    </tr> -->
 
                                     <tr class="">
                                         <td class="pt-3">Priority : </td>
@@ -116,7 +125,7 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="pt-3">Assigned : </td>
                                         <td class="pt-3">
                                             <div>
@@ -128,7 +137,7 @@
                                                 <label>Not assigned yet</label>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
 
                                     <tr>
                                         <td colspan=2 class="pt-3">
@@ -149,15 +158,15 @@
 
     <script>
         $('document').ready(() => {
-            $('#repoNameNew').prop('disabled', true);
+            // $('#repoNameNew').prop('disabled', true);
 
-            $('#repoNameSelect').change(() => {
-                if ($('#repoNameSelect').val() == 'OTHER') {
-                    $('#repoNameNew').prop('disabled', false);
-                } else {
-                    $('#repoNameNew').prop('disabled', true);
-                }
-            })
+            // $('#repoNameSelect').change(() => {
+            //     if ($('#repoNameSelect').val() == 'OTHER') {
+            //         $('#repoNameNew').prop('disabled', false);
+            //     } else {
+            //         $('#repoNameNew').prop('disabled', true);
+            //     }
+            // })
 
         });
     </script>

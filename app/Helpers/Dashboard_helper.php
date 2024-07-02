@@ -20,22 +20,27 @@ class DashBoard_helper
             ->getResult();
     }
 
+
+    /**
+     * This function returns all repo detais
+     * of current user logged in 
+     * for addPrsAlready Page
+     */
     function alreadyPrs_repo_data($repo)
     {
-        $repo_data = $repo
+        return $repo
             ->select("
-            repo_name,
-            COUNT(issue.issue_number) as total_issues, 
-            repo.created_at,
-            repo.updated_at
-        ")
-            ->join("issue", "repo.id = issue.repo_id")
-            ->where("issue.user_id", session()->get('userId'))
+                repo_name,
+                COUNT(issue.issue_number) as total_issues, 
+                repo.created_at,
+                repo.updated_at
+            ")
+            ->join("issue", "repo.id = issue.repo_id", 'left')
+            ->where("repo.user_id", session()->get('userId'))
             ->groupBy('repo.repo_name')
+            ->orderBy('total_issues', 'desc')
             ->get()
             ->getResult();
-
-        return $repo_data;
     }
 
     function add_pr_repo_name($repo)

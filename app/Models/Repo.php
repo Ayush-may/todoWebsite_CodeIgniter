@@ -12,7 +12,7 @@ class Repo extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id,repo_name'];
+    protected $allowedFields    = ['user_id','repo_name','repo_link'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

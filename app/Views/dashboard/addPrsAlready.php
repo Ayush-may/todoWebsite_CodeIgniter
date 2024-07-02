@@ -20,11 +20,11 @@
     <main class="m-0 p-0 h-100 bg-light position-relative">
         <?= view('components\navbarAuth') ?>
 
-        <section class="contents h-100">
+        <section class="contents ">
             <section class="sidebar h-100 shadow bg-dark bg-gradient ">
                 <?= view('components/sidebarUl') ?>
             </section>
-            <section class="mainContents w-100 h-100 text-dark">
+            <section class="mainContents w-100 h-100 pb-5 text-dark" style="overflow-y:scroll;">
                 <h4 class="h1">Add issue</h4>
                 <hr>
 
@@ -36,11 +36,11 @@
                 </section>
 
 
-                <section class="mt-3 px-3 " style="max-width:100%">
+                <section class="mt-3 px-3" style="max-width:100%;">
                     <p class="h4 text-capitalize">previos added repos</p>
 
-                    <section style="max-width:100%">
-                        <table class="w-100 table-responsive table-bordered">
+                    <section class="border border-dark" style="max-width:100%;max-height:50%;overflow-y:scroll;">
+                        <table class="w-100 table table-responsive table-bordered">
                             <thead class="text-center">
                                 <tr class="table-secondary">
                                     <th>Sno.</th>
