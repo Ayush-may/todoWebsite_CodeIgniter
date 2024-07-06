@@ -15,3 +15,8 @@ $routes->post('/', 'Auth::index');
 // $routes->get('dashboard/completedprs', 'Dashboard::completedprs');
 // $routes->get('dashboard/wishlistprs', 'Dashboard::wishlistprs');
 // $routes->get('dashboard/test1', 'Dashboard::test1');
+
+/**
+ * This remove the repo
+ */
+$routes->match(['get', 'post'], 'dashboard/remove_repo/(:repo_id)', 'Dashboard::remove_repo/$1');

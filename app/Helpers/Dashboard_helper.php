@@ -30,6 +30,7 @@ class DashBoard_helper
     {
         return $repo
             ->select("
+                repo.id as repoId,
                 repo_name,
                 COUNT(issue.issue_number) as total_issues, 
                 repo.created_at,

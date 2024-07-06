@@ -12,6 +12,7 @@ use App\Helpers\DashBoard_helper;
 class Dashboard extends BaseController
 {
     protected $dashHelper;
+
     function __construct()
     {
         $this->dashHelper = new DashBoard_helper();
@@ -71,12 +72,27 @@ class Dashboard extends BaseController
     {
         return view('dashboard/workinprogress');
     }
+
     public function completedprs()
     {
         return view('dashboard/completedprs');
     }
+
     public function wishlistprs()
     {
         return view('dashboard/wishlistprs');
+    }
+
+    public function remove_repo($id)
+    {
+        if ($this->request->getMethod() == "POST") {
+            $repo = new Repo();
+            if ($repo->delete($id)) {
+                session()->setFlashdata('validate_success', 'Successfully deleted repo !');
+                return redirect()->to('dashboard/addPrsAlready');
+            }
+        }
+        session()->setFlashdata('validate_error', 'Something went wrong !');
+        return redirect()->to('dashboard/addPrsAlready');
     }
 }

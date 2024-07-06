@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Repo extends Model
 {
     protected $table            = 'repo';
-    protected $primaryKey       = 'repo_id';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
