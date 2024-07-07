@@ -23,7 +23,7 @@ class DashBoard_helper
 
     /**
      * This function returns all repo detais
-     * of current user logged in 
+     * of current user logged in
      * for addPrsAlready Page
      */
     function alreadyPrs_repo_data($repo)
@@ -51,5 +51,15 @@ class DashBoard_helper
             ->where('repo.user_id', session()->get('userId'))
             ->get()
             ->getResult();
+    }
+
+    function remove_repo_by_id($repo, $repo_id)
+    {
+        if ($repo->delete($repo_id)) {
+            session()->setFlashdata('validate_success', 'Successfully deleted repo !');
+            return true;
+        }
+        session()->setFlashdata('validate_error', 'Something went wrong !');
+        return false;
     }
 }

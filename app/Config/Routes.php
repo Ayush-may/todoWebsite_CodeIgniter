@@ -20,3 +20,4 @@ $routes->post('/', 'Auth::index');
  * This remove the repo
  */
 $routes->match(['get', 'post'], 'dashboard/remove_repo/(:repo_id)', 'Dashboard::remove_repo/$1');
+$routes->get('dashboard/repo_details/(:repo_id)', 'Dashboard::repo_details/$1');

@@ -83,16 +83,28 @@ class Dashboard extends BaseController
         return view('dashboard/wishlistprs');
     }
 
+    public function repo_details($repo_id)
+    {
+        $repo = new Repo();
+        $data = $repo->select('repo.*')
+            ->where('repo.user_id', session()->get('userId'))
+            ->where('repo.id', $repo_id)
+            ->get()
+            ->getResult();
+
+        echo '<pre>';
+        print_r($data);
+
+        return view('dashboard/repo_details');
+    }
+
     public function remove_repo($id)
     {
         if ($this->request->getMethod() == "POST") {
-            $repo = new Repo();
-            if ($repo->delete($id)) {
-                session()->setFlashdata('validate_success', 'Successfully deleted repo !');
+            if ($this->dashHelper->remove_repo_by_id(new Repo(), $id)) {
                 return redirect()->to('dashboard/addPrsAlready');
             }
         }
-        session()->setFlashdata('validate_error', 'Something went wrong !');
         return redirect()->to('dashboard/addPrsAlready');
     }
 }

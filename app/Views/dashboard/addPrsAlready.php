@@ -42,7 +42,6 @@
                 </div>
             </section>
 
-
             <section class="mt-3 px-3" style="max-width:100%">
                 <p class="h4 text-capitalize">previos added repos</p>
 
@@ -84,12 +83,16 @@
                                 <td><?= $row->total_issues ?></td>
                                 <td>not coded</td>
                                 <td>not coded</td>
-                                <td class="text-nowrap"><?= $row->created_at ?></td>
-                                <td><?= $row->updated_at == "" ? "Not updated" : $row->updated_at ?></td>
+                                <td class=""><?= $row->created_at ?></td>
+                                <td class="text-wrap"><?= $row->updated_at == "" ? "Not updated" : $row->updated_at ?></td>
                                 <td class="d-flex justify-content-center gap-1">
                                     <button class="btn btn-warning">Edit</button>
                                     |
                                     <button class="btn btn-success">Add</button>
+                                    |
+                                    <button class="btn btn-info"><a
+                                                href="<?= site_url('dashboard/repo_details/' . $row->repoId) ?>">Show</a>
+                                    </button>
                                 </td>
                                 <td>
                                     <form action="<?= site_url('dashboard/remove_repo/' . $row->repoId) ?>"
@@ -109,7 +112,8 @@
     </section>
 </main>
 <script>
-    $('document').ready(function () {
+    $(document).ready(function () {
+
     });
 </script>
 </body>
