@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Issue;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Controllers\BaseController;
 use App\Models\Repo;
@@ -92,10 +93,18 @@ class Dashboard extends BaseController
             ->get()
             ->getResult();
 
-        echo '<pre>';
-        print_r($data);
+        $issue = new Issue();
+        $issueData = $issue
+            ->select('issue.*')
+            ->where('issue.user_id', session()->get('userId'))
+            ->where('issue.repo_id', $repo_id)
+            ->get()
+            ->getResult();
 
-        return view('dashboard/repo_details');
+//        echo '<pre>';
+//        print_r($issueData);
+
+        return view('dashboard/repo_details', ["data" => $data, 'issue' => $issueData]);
     }
 
     public function remove_repo($id)

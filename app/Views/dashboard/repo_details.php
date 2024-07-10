@@ -1,3 +1,6 @@
+<?php
+$repo = $data[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +33,73 @@
             <?= view('components/sidebarUl') ?>
         </section>
 
+        <section class="mainContents w-100 h-100 pb-5 text-dark" style="overflow-y:scroll;">
+            <h4 class="h1">Repo Details</h4>
+            <hr>
+
+            <div class="card">
+                <div class="card-body">
+                    <table>
+                        <tbody class="">
+                        <tr>
+                            <td><p class="fw-bold h5 text-dark me-3">Name :</p></td>
+                            <td><p class="h5"><?= $repo->repo_name ?></p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--This is issue table of current user and current repo selected -->
+            <div>
+                <h4 class="h2 mt-4">Issues</h4>
+                <hr>
+                <?php if (!isset($row)) { ?>
+                    <table class="table table-bordered table-hover w-100">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Sno</th>
+                            <th>Issue Number</th>
+                            <th>Assigned</th>
+                            <th>Pr Generated</th>
+                            <th>close</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $index = 1;
+                        foreach ($issue as $row): ?>
+                            <tr data-key="<?= $row->issue_id ?>">
+                                <td><?= $index++ ?></td>
+                                <td><?= $row->issue_number ?></td>
+                                <td><?= $row->issue_assign == 1 ? 'Assigned' : 'Not Assigned' ?></td>
+                                <td>not coded rn</td>
+                                <td>
+                                    <button class="btn btn-outline-danger">close issue</button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php } else { ?>
+                    No issue is created for this repo!
+                <?php } ?>
+            </div>
+
+            <div>
+                <h4 class="h2 mt-4">Pr</h4>
+                <hr>
+
+                <?php
+                if (!isset($pr)) {
+                    echo "this is not set";
+                }
+                ?>
+
+            </div>
+
+
+        </section>
 
     </section>
 </main>
