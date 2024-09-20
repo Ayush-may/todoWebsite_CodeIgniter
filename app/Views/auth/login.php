@@ -22,6 +22,12 @@
                         <h6 class="text-center fw-bold display-6">Login</h6>
                         <form action="" class="form" method="POST">
 
+                            <?php if (session()->getFlashdata('success')) : ?>
+                                <div class="alert alert-success m-0" role="alert">
+                                    <?= session()->getFlashdata('success') ?>
+                                </div>
+                            <?php endif; ?>
+
                             <!-- successfull message -->
                             <?php if (session()->getFlashdata('error')) : ?>
                                 <div class="alert alert-danger m-0" role="alerr">
@@ -59,6 +65,7 @@
                                 </tr>
                             </table>
                         </form>
+                        <a href=<?= site_url('auth/forget_password') ?> class="text-center mb-3">Forget Password</a>
                         <p style="font-size:0.8rem;">create a new account ?
                             <a href=<?= site_url('auth/signup') ?>>click here</a>
                         </p>

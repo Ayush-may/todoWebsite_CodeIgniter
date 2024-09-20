@@ -69,4 +69,34 @@ class Auth extends BaseController
 
         return view('auth/signup');
     }
+
+    public function forget_password(){
+
+        if($this->request->getMethod() == "POST"){
+            $username = $_POST['github_username'];
+            $new_password = $_POST['new_password'];
+            $confirm_password = $_POST['confirm_password'];
+
+            if( $new_password != $confirm_password){
+                session()->setFlashdata("error", "Passwords do not match !");
+                return redirect()->to('auth/forget_password')->withInput();
+            }
+
+            $userModel = new Users();
+            $user = $userModel->where("githubUsername", $username)->first();
+
+            if(!$user){
+                session()->setFlashdata("error", "User is not available !");
+                return redirect()->to('auth/forget_password')->withInput();
+            }
+
+            $hash_pass  = password_hash($new_password, PASSWORD_DEFAULT);
+            $userModel->update($user['id'], ['password' => $hash_pass]);
+
+            session()->setFlashdata("success", "Password updated successfully!");
+            return redirect()->to('auth/index');
+        }
+
+        return view('auth/forget_password');
+    }
 }
